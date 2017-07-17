@@ -5,7 +5,7 @@
 While there already are several solutions for LaTeX invoices, most are either
 sum-it-yourself templates and the [invoice](https://www.ctan.org/pkg/invoice)
 package, which appears to be unmaintained and fails to work for my documents,
-sespecially documents using KOMA-Script. Since LaTeX3 offers a comfortable
+especially documents using KOMA-Script. Since LaTeX3 offers a comfortable
 interface for working with caculations, this package (re-)implements invoice
 functionalioty using LaTeX3.
 
