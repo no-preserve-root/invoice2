@@ -6,7 +6,7 @@
 % it under the terms of the GNU General Public License as published by
 % the Free Software Foundation, either version 3 of the License, or
 % (at your option) any later version.
-% 
+%
 % This program is distributed in the hope that it will be useful,
 % but WITHOUT ANY WARRANTY; without even the implied warranty of
 % MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -89,9 +89,9 @@
 %        subtracted to show the net price. If VAT is excluded, all prices are
 %        net prices, the VAT is added to show the gross price. Default is
 %        excluded VAT.
-%    \item[currency-symbol] The currency symbol to use, e.g. \euro{}. 
+%    \item[currency-symbol] The currency symbol to use, e.g. \euro{}.
 %        Default is \$.
-%    \item[currency-fraction-digits] The fractional digits to use for the 
+%    \item[currency-fraction-digits] The fractional digits to use for the
 %        currency. For almost all currencies, this is two (100 of the smaller
 %        unit make 1 of the larger). Default is 2.
 %    \item[colorize] Enables colorization. While the typographical results may
@@ -100,7 +100,7 @@
 %    \item[odd-color] The color to use for odd invoice rows, if colorization is
 %        enabled. The color must be understood by \pkg{xcolor}. Default is
 %        white.
-%    \item[even-color] The color to use for even invoice rows, if colorization 
+%    \item[even-color] The color to use for even invoice rows, if colorization
 %        is enabled. The color must be understood by \pkg{xcolor}. Default is
 %        light grey (lightgray).
 %    \item[title-color] The color to use for the title row, if colorization is
@@ -121,12 +121,12 @@
 % At the moment, localizations for english and german are provided. See the
 % documentation for the \pkg{translations} package for adding new localizations.
 % Please consider contributing your translations to this project.
-% 
+%
 % The following keys are defined:
 % \begin{description}
 %    \item[invoice2-thousands-sep] The separator between thousands, e.\,g. the
 %        space in 1\,000. Default is a small space.
-%    \item[invoice2-decimal-point] The separator between whole and 
+%    \item[invoice2-decimal-point] The separator between whole and
 %        fractional parts, e.\,g.~the dot in 40.00. Default is a dot.
 %    \item[invoice2-amount] The \enquote{Amount} column title.
 %    \item[invoice2-item] The \enquote{Item} column title.
@@ -180,10 +180,10 @@
 % \cs{invoicesingleitem} \oarg{VAT} \marg{item name} \marg{unit price}
 % \end{syntax}
 % These commands add an item to the current invoice. The VAT argument is
-% optional, if not given, VAT will default to the value set in the 
+% optional, if not given, VAT will default to the value set in the
 % configuration. For singular items, the second form can be used to imply an
 % amount of 1.
-% 
+%
 % VAT must be given as a floating point value (see the configuration parameter
 % list for details). The amount and the unit price can be an integer or a
 % floating point number. Do \emph{not} add a currency symbol or formatting to
@@ -272,17 +272,17 @@
 % \end{itemize}
 %
 % \section{License}
-% 
+%
 % This program is free software: you can redistribute it and/or modify
 % it under the terms of the GNU General Public License as published by
 % the Free Software Foundation, either version 3 of the License, or
 % (at your option) any later version.
-% 
+%
 % This program is distributed in the hope that it will be useful,
 % but WITHOUT ANY WARRANTY; without even the implied warranty of
 % MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 % GNU General Public License for more details.
-% 
+%
 % You should have received a copy of the GNU General Public License
 % along with this program.  If not, see \url{http://www.gnu.org/licenses/}.
 %
@@ -345,7 +345,7 @@
 % \begin{variable}{\l_@@_vat_fp}
 % The default value for VAT. If an invoice has only zero VAT for all entries,
 % no VAT is added and the column is not rendered. VAT can be set per line.
-% 
+%
 %    \begin{macrocode}
 \fp_new:N \l_@@_vat_fp
 %    \end{macrocode}
@@ -356,7 +356,7 @@
 % total will compute the net total and display it. If false, the total will
 % compute the gross total. If the VAT is zero, this does nothing. We will render
 % a gross total only.
-% 
+%
 %    \begin{macrocode}
 \bool_new:N \l_@@_included_vat_bool
 %    \end{macrocode}
@@ -366,7 +366,7 @@
 % The currency symbol to use.
 %
 % \subsection{Price Typesetting}
-% 
+%
 %    \begin{macrocode}
 \tl_new:N \l_@@_currency_symbol_tl
 %    \end{macrocode}
@@ -375,7 +375,7 @@
 % \begin{variable}{\l_@@_currency_fraction_digits_int}
 % The number of fractional digits for the currency. Contrary to popular opinion,
 % this does not always equal two.
-% 
+%
 %    \begin{macrocode}
 \int_new:N \l_@@_currency_fraction_digits_int
 %    \end{macrocode}
@@ -387,7 +387,7 @@
 % Controls if the invoice should be colorized at all. We only support
 % alternating colorization for even and odd lines and a special color for the
 % total line.
-% 
+%
 %    \begin{macrocode}
 \bool_new:N \l_@@_colorize_bool
 %    \end{macrocode}
@@ -395,7 +395,7 @@
 %
 % \begin{variable}{\l_@@_odd_color_tl}
 % The color for odd lines. Only used if colorization is enabled.
-% 
+%
 %    \begin{macrocode}
 \tl_new:N \l_@@_odd_color_tl
 \tl_set:Nn \l_@@_odd_color_tl {white}
@@ -404,7 +404,7 @@
 %
 % \begin{variable}{\l_@@_even_color_tl}
 % The color for even lines. Only used if colorization is enabled.
-% 
+%
 %    \begin{macrocode}
 \tl_new:N \l_@@_even_color_tl
 \tl_set:Nn \l_@@_even_color_tl {lightgray}
@@ -413,7 +413,7 @@
 %
 % \begin{variable}{\l_@@_title_color_tl}
 % The color for the title line. Only used if colorization is enabled.
-% 
+%
 %    \begin{macrocode}
 \tl_new:N \l_@@_title_color_tl
 \tl_set:Nn \l_@@_title_color_tl {white}
@@ -422,7 +422,7 @@
 %
 % \begin{variable}{\l_@@_total_color_tl}
 % The color for the total line. Only used if colorization is enabled.
-% 
+%
 %    \begin{macrocode}
 \tl_new:N \l_@@_total_color_tl
 \tl_set:Nn \l_@@_total_color_tl {white}
@@ -434,7 +434,7 @@
 % \begin{variable}{\l_@@_in_invoice_bool}
 % Tracks if we are in an invoice environment. This allows us to crash when
 % nesting invoice environments by accident.
-% 
+%
 %    \begin{macrocode}
 \bool_new:N \l_@@_in_invoice_bool
 %    \end{macrocode}
@@ -443,7 +443,7 @@
 % \begin{variable}{\l_@@_row_number_int}
 % Counts the invoice rows. We use this to tell even from odd lines. Starts with
 % 1; this must be reset at the beginning of each invoice.
-% 
+%
 %    \begin{macrocode}
 \int_new:N \g_@@_row_number_int
 %    \end{macrocode}
@@ -452,7 +452,7 @@
 % \begin{variable}{\l_@@_vat_nonzero_bool}
 % Tracks if we have already encountered a line with non-zero VAT. If so, we
 % will render a VAT column and separate gross and net totals.
-% 
+%
 %    \begin{macrocode}
 \bool_new:N \l_@@_vat_nonzero_bool
 %    \end{macrocode}
@@ -461,7 +461,7 @@
 % \begin{variable}{\l_@@_amount_nonone_bool}
 % Tracks if we have already encountered a line with non-one amount. If so, we
 % will render an amount and an unit price column.
-% 
+%
 %    \begin{macrocode}
 \bool_new:N \l_@@_amount_nonone_bool
 %    \end{macrocode}
@@ -469,7 +469,7 @@
 %
 % \begin{variable}{\l_@@_net_total_fp}
 % The running net total.
-% 
+%
 %    \begin{macrocode}
 \fp_new:N \l_@@_net_total_fp
 %    \end{macrocode}
@@ -477,7 +477,7 @@
 %
 % \begin{variable}{\l_@@_vat_total_fp}
 % The running VAT total.
-% 
+%
 %    \begin{macrocode}
 \fp_new:N \l_@@_vat_total_fp
 %    \end{macrocode}
@@ -485,7 +485,7 @@
 %
 % \begin{variable}{\l_@@_gross_total_fp}
 % The running gross total.
-% 
+%
 %    \begin{macrocode}
 \fp_new:N \l_@@_gross_total_fp
 %    \end{macrocode}
@@ -495,7 +495,7 @@
 % The tabular under construction. We create the tabular contents on the fly,
 % using a conditional for the VAT column that is expanded only when emitting the
 % invoice.
-% 
+%
 %    \begin{macrocode}
 \tl_new:N \l_@@_tabular_tl
 %    \end{macrocode}
@@ -546,10 +546,10 @@
 %    \end{macrocode}
 %
 % \subsection{\cmd{invoiceoptions} Command}
-% 
+%
 % \begin{macro}{\invoiceoptions}
 % We also provide an interface to change the configuration at run time.
-% 
+%
 %    \begin{macrocode}
 \NewDocumentCommand{\invoiceoptions}{m}{
     \keys_set:nn {invoice2} {#1}
@@ -569,7 +569,7 @@
 %
 % Sind \pkg{longtable} refuses to expand the column specification, we force
 % prior expansion of the booleans.
-% 
+%
 %    \begin{macrocode}
 \cs_new:Nn {\@@_print_begin_table:}{
 	\exp_args:Nx \longtable {
@@ -585,7 +585,7 @@
 %
 % \begin{macro}{\@@_print_column_title:n}
 % Emits a formatted column title.
-% 
+%
 %    \begin{macrocode}
 \cs_new:Nn {\@@_print_column_title:n}{
     \multicolumn{1}{c}{
@@ -660,7 +660,7 @@
 % \begin{macro}{\@@_print_header:}
 % Emits the invoice header. If all amounts are equal to 1, we skip the amount
 % column and the unit price column. If all VATs are 0, we skip the VAT column.
-% 
+%
 %    \begin{macrocode}
 \cs_new:Nn {\@@_print_header:}{
     \@@_print_begin_table:
@@ -697,7 +697,7 @@
 % \begin{macro}{\@@_print_currency_value:n, \@@_print_currency_value:N}
 % Emits a currency value, formatted with the current settings. The value must
 % be a floating point number or variable.
-% 
+%
 %    \begin{macrocode}
 \cs_new:Nn {\@@_print_currency_value:n}{
     \num[round-precision={\int_use:N \l_@@_currency_fraction_digits_int},
@@ -719,7 +719,7 @@
 %\begin{macro}{\@@_print_percentage:n}
 % Emits a percentage, formatted with the current settings. The value must be a
 % floating point number.
-% 
+%
 %    \begin{macrocode}
 \cs_new:Nn {\@@_print_percentage:n}{
     \num[round-integer-to-decimal,,
@@ -736,7 +736,7 @@
 % \begin{macro}{\@@_update_trackers:nn}
 % Update the VAT-not-zero and amount-not-zero trackers for the given VAT and
 % amount values.
-% 
+%
 %    \begin{macrocode}
 \cs_new:Nn {\@@_update_trackers:nn}{
     \fp_compare:nT {#1 != 1}{
@@ -750,7 +750,7 @@
 % \end{macro}
 %
 % \begin{macro}{\@@_update_totals:nnn}
-% Update the totals for the given amount, VAT and price per unit values. We 
+% Update the totals for the given amount, VAT and price per unit values. We
 % increase the net total by $\tilde{n}$, the VAT total by $\tilde{v}$ and the
 % gross total by $\tilde{g}$. For unit price $p$, amount $a$, VAT $v$ and
 % non-included VATs, this is computed as
@@ -765,7 +765,7 @@
 %    \tilde{n} &= \frac{\tilde{g}}{1 + v} = \frac{a \cdot p}{1 + v} \\
 %    \tilde{v} &= \tilde{g} - \tilde{n} = \frac{a \cdot v \cdot p}{1 + v} \\
 % \end{align*}
-% 
+%
 %    \begin{macrocode}
 \cs_new:Nn {\@@_update_totals:nnn}{
     \fp_add:Nn \l_@@_gross_total_fp {
@@ -783,7 +783,7 @@
 %
 % \begin{macro}{\@@_print_amount:n}
 % Print the given amount value or nothing, if all amounts are one.
-% 
+%
 %    \begin{macrocode}
 \cs_new:Nn {\@@_print_amount:n}{
     \bool_if:NT \l_@@_amount_nonone_bool {
@@ -795,7 +795,7 @@
 %
 % \begin{macro}{\@@_print_item:n}
 % Print the given item name.
-% 
+%
 %    \begin{macrocode}
 \cs_new:Nn {\@@_print_item:n}{
     #1 &
@@ -805,7 +805,7 @@
 %
 % \begin{macro}{\@@_print_vat:n}
 % Print the given VAT or nothing, if all VATs are zero.
-% 
+%
 %    \begin{macrocode}
 \cs_new:Nn {\@@_print_vat:n}{
     \bool_if:NT \l_@@_vat_nonzero_bool {
@@ -817,7 +817,7 @@
 %
 % \begin{macro}{\@@_print_unit_price:n}
 % Print the given unit price or nothing, if all amounts are one.
-% 
+%
 %    \begin{macrocode}
 \cs_new:Nn {\@@_print_unit_price:n}{
     \bool_if:NT \l_@@_amount_nonone_bool {
@@ -834,7 +834,7 @@
 % \[\tilde{p} = a \cdot (1 + v) \cdot p,\]
 % for included VATs, as
 % \[\tilde{p} = a \cdot p.\]
-% 
+%
 %    \begin{macrocode}
 \cs_new:Nn {\@@_print_price:nnn}{
     \@@_print_currency_value:n {
@@ -849,7 +849,7 @@
 % \begin{macro}{\@@_colorize_row:nnn}
 % Colorize the current row according to even/odd colorization, if color was
 % requested in the configuration.
-% 
+%
 %    \begin{macrocode}
 \cs_new:Nn {\@@_colorize_row:}{
     \bool_if:NT \l_@@_colorize_bool {
@@ -869,7 +869,7 @@
 % Add a new entry with non-default VAT to the invoice. This will update the
 % VAT-not-zero and amount-not-zero trackers. Arguments are expected to be (in
 % this order): amount, item name, VAT, unit price.
-% 
+%
 %    \begin{macrocode}
 \cs_new:Nn {\@@_add_row:nnnn}{
     \@@_update_trackers:nn {#1} {#3}
@@ -890,7 +890,7 @@
 % This is the user interface to adding items. We read the VAT from the optional
 % argument or the configuration, add an amount of one for single items and
 % delegate to our implementation.
-% 
+%
 %    \begin{macrocode}
 \NewDocumentCommand{\invoiceitem}{ommm}{
     \@@_add_row:nnnn {#2} {#3}
@@ -910,7 +910,7 @@
 % \begin{macro}{\@@_print_multicolumn_count:}
 % Emits the column count to group in the final lines. This is the amount of
 % columns minus one.
-% 
+%
 %    \begin{macrocode}
 \cs_new:Nn {\@@_print_multicolumn_count:}{
     \int_eval:n {
@@ -925,7 +925,7 @@
 % \begin{macro}{\@@_print_footer_item:n}
 % Emits a formatted footer item. We also handle colorization of the next cell
 % here.
-% 
+%
 %    \begin{macrocode}
 \cs_new:Nn {\@@_print_footer_item:n}{
     \multicolumn{\@@_print_multicolumn_count:}{r}{
@@ -942,7 +942,7 @@
 %
 % \begin{macro}{\@@_print_net_item:}
 % Emits the \enquote{net total} item.
-% 
+%
 %    \begin{macrocode}
 \cs_new:Nn {\@@_print_net_item:}{
     \bool_if:NT \l_@@_vat_nonzero_bool {
@@ -955,7 +955,7 @@
 %
 % \begin{macro}{\@@_print_vat_item:}
 % Emits the \enquote{VAT total} item.
-% 
+%
 %    \begin{macrocode}
 \cs_new:Nn {\@@_print_vat_item:}{
     \bool_if:NT \l_@@_vat_nonzero_bool {
@@ -968,7 +968,7 @@
 %
 % \begin{macro}{\@@_print_gross_item:}
 % Emits the \enquote{gross total} item.
-% 
+%
 %    \begin{macrocode}
 \cs_new:Nn {\@@_print_gross_item:}{
     \@@_print_footer_item:n {\GetTranslation{invoice2-gross-total}}
@@ -979,7 +979,7 @@
 %
 % \begin{macro}{\@@_print_footer:}
 % Emits the invoice footer. If all VATs are 0, we skip the net and VAT rows.
-% 
+%
 %    \begin{macrocode}
 \cs_new:Nn {\@@_print_footer:}{
     \midrule
@@ -997,7 +997,7 @@
 % \begin{macro}{\@@_begin_invoice:n}
 % Begins a new invoice environment. We check for nested environments and set up
 % configuration overrides.
-% 
+%
 %    \begin{macrocode}
 \cs_new:Nn {\@@_begin_invoice:n}{
     \bool_if:NT \l_@@_in_invoice_bool {
@@ -1013,7 +1013,7 @@
 % \begin{macro}{\@@_end_invoice:}
 % End an invoice enviroenment. Here, we can emit the \cmd{longtable} environment
 % since we possess all required information.
-% 
+%
 %    \begin{macrocode}
 \cs_new:Nn {\@@_end_invoice:}{
     \@@_print_header:
@@ -1037,7 +1037,7 @@
 % \end{macro}
 %
 % \section{Messages and Errors}
-% 
+%
 %    \begin{macrocode}
 \msg_new:nnnn {invoice2} {nested-invoice}
     {\msg_error_text:n {invoice2}:~%
