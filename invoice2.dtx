@@ -185,9 +185,9 @@
 % amount of 1.
 % 
 % VAT must be given as a floating point value (see the configuration parameter
-% list for details). The amount must be an integer, the unit price a floating
-% point number. Do \emph{not} add a currency symbol or formatting to the unit
-% price.
+% list for details). The amount and the unit price can be an integer or a
+% floating point number. Do \emph{not} add a currency symbol or formatting to
+% the unit price.
 % \end{function}
 %
 % \section{Examples}
@@ -211,8 +211,9 @@
 % \end{invoice}
 %
 % A more complex example involves amounts and a VAT. We will apply a 9\,\% VAT
-% to our books and stock up on more copies of the TeXbook. This will enable
-% all columns and an extended total.
+% to our books, buy duplicate editions of The Art of Computer Programming 1 and
+% 2 (simulated by buying 1.5 copies) and stock up on more copies of the
+% TeXbook. This will enable all columns and an extended total.
 %
 % \begin{verbatim}
 %    \invoiceoptions{vat=.09}
@@ -225,7 +226,7 @@
 % \invoiceoptions{vat=.09}
 % \begin{invoice}[currency-symbol={\euro{}}]
 %    \invoicesingleitem{Ignition!}{4087.99}
-%    \invoicesingleitem{The Art of Computer Programming 1--4}{162.99}
+%    \invoiceitem{1.5}{The Art of Computer Programming 1--4}{162.99}
 %    \invoiceitem{20}{The TeXbook}{55.69}
 % \end{invoice}
 % \invoiceoptions{vat=0}
@@ -257,6 +258,8 @@
 %    \item Spelling fix in README.md. Thanks to Ina Dau for noticing.
 %    \item Clean up unused README generation in the .ins file.
 %    \item Report in with the correct motto.
+%    \item Support non-integer amounts. Thanks to Gijs Hillenius for the
+%        suggestion.
 % \end{itemize}
 %
 % \subsection{Version 1.0}
@@ -675,6 +678,22 @@
 %
 % \subsection{Content Rendering}
 %
+% \begin{macro}{\@@_print_real_value:n}
+% Emits a currency value, formatted with the current settings. The value must
+% be a floating point number or variable.
+%
+%    \begin{macrocode}
+\cs_new:Nn {\@@_print_real_value:n}{
+	\num[round-integer-to-decimal,
+	group-minimum-digits=4,
+	group-separator={\GetTranslation{invoice2-thousands-sep}},
+	output-decimal-marker={\GetTranslation{invoice2-decimal-point}}]{
+		#1
+	}
+}
+%    \end{macrocode}
+% \end{macro}
+%
 % \begin{macro}{\@@_print_currency_value:n, \@@_print_currency_value:N}
 % Emits a currency value, formatted with the current settings. The value must
 % be a floating point number or variable.
@@ -720,7 +739,7 @@
 % 
 %    \begin{macrocode}
 \cs_new:Nn {\@@_update_trackers:nn}{
-    \int_compare:nT {#1 != 1}{
+    \fp_compare:nT {#1 != 1}{
         \bool_set_true:N \l_@@_amount_nonone_bool
     }
     \fp_compare:nT {#2 != 0}{
@@ -768,7 +787,7 @@
 %    \begin{macrocode}
 \cs_new:Nn {\@@_print_amount:n}{
     \bool_if:NT \l_@@_amount_nonone_bool {
-        #1 &
+        \@@_print_real_value:n {#1} &
     }
 }
 %    \end{macrocode}
