@@ -289,6 +289,10 @@
 %
 % \subsection{Version 1.2}
 % \changes{1.2}{2018/01/15}{Bugfix release}
+% \begin{itemize}[nosep]
+%    \item Fix option loading for the \pkg{xcolor} package. Thanks to Alfred
+%        H.\ Gitter for reporting.
+% \end{itemize}
 %
 % \subsection{Version 1.1}
 % \changes{1.1}{2017/08/16}{Bugfix release}
@@ -346,7 +350,8 @@
 \RequirePackage{longtable}
 \RequirePackage{siunitx}
 \RequirePackage{translations}
-\RequirePackage[table]{xcolor}
+\PassOptionsToPackage{table}{xcolor}
+\RequirePackage{xcolor}
 \RequirePackage{xparse}
 \ProvidesExplPackage{invoice2}{2018/01/15}{1.2}
     {Intelligent invoices with LaTeX3}
