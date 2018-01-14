@@ -9,12 +9,22 @@ especially documents using KOMA-Script. Since LaTeX3 offers a comfortable
 interface for working with caculations, this package (re-)implements invoice
 functionalioty using LaTeX3.
 
-## Obtaining the Source Code
+## Building the package
 
-invoice2 is developed as a
-[Github project](https://github.com/no-preserve-root/invoice2). Yoe are welcome
-to report your issues there and submit pull requests, especially for additional
-translations.
+invoice2 uses the [l3build](https://www.ctan.org/pkg/l3build) tool to create
+the package and documentation files. If your LaTeX distribution is sufficiently
+up to date, execute
+
+> ./build.lua ctan
+
+in a source checkout to build a CTAN upload zip and a TDS zip. If you just want
+to install a copy of invoice2, execute
+
+> ./build.lua install
+
+to copy the package to your texmf tree.
+
+After building, consult the invoice2.pdf for the actual package documentation.
 
 ## Copyright and Licensing
 
