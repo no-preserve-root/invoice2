@@ -28,7 +28,7 @@ After building, consult the invoice2.pdf for the actual package documentation.
 
 ## Copyright and Licensing
 
-Copyright (C) 2017 Simon Dierl <simon.dierl@cs.tu-dortmund.de>
+Copyright (C) 2017-2018 Simon Dierl <simon.dierl@cs.tu-dortmund.de>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
