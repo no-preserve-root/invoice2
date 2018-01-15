@@ -118,9 +118,10 @@
 % package. \pkg{translations} uses a key-to-translation mapping that can be
 % overridden by the user. See the package documentation for further information.
 %
-% At the moment, localizations for english and german are provided. See the
-% documentation for the \pkg{translations} package for adding new localizations.
-% Please consider contributing your translations to this project.
+% At the moment, localizations for english, german and swiss german are
+% provided. See the documentation for the \pkg{translations} package for adding
+% new localizations. Please consider contributing your translations to this
+% project.
 %
 % The following keys are defined:
 % \begin{description}
@@ -302,6 +303,8 @@
 %    \item Clarified that \pkg{eurosym} is required to use the \cmd{euro}
 %        symbol. Thanks to Alfred H.\ Gitter for the suggestion.
 %    \item Split the \texttt{README.md} into a Github version and one for CTAN.
+%    \item Add support for Swiss German. Thanks to \texttt{@foreachthing} for
+%        the translation.
 % \end{itemize}
 %
 % \subsection{Version 1.1}
@@ -373,6 +376,7 @@
 %    \begin{macrocode}
 \LoadDictionaryFor{english}{invoice2}
 \LoadDictionaryFor{german}{invoice2}
+\LoadDictionaryFor{swissgerman}{invoice2}
 \DeclareTranslationFallback{invoice2-thousands-sep}{\,}
 \DeclareTranslationFallback{invoice2-decimal-point}{.}
 \DeclareTranslationFallback{invoice2-amount}{Amount}
@@ -1150,6 +1154,16 @@
 \ProvideDictTranslation{invoice2-vat-total}{USt}
 \ProvideDictTranslation{invoice2-gross-total}{Gesamtbetrag}
 %</dictGerman>
+%    \end{macrocode}
+%
+% \subsection{Swiss German Dictionary}
+%
+%    \begin{macrocode}
+%<*dictSwissGerman>
+\ProvideDictionaryFor{Swiss German}{invoice2}
+\ProvideDictTranslation{invoice2-thousands-sep}{'}
+\ProvideDictTranslation{invoice2-decimal-point}{.}
+%</dictSwissGerman>
 %    \end{macrocode}
 % \end{implementation}
 %
