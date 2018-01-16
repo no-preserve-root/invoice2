@@ -46,7 +46,7 @@
 % \author{Simon Dierl
 %   \texttt{\href{mailto:simon.dierl@cs.tu-dortmund.de}
 %       {<simon.dierl@cs.tu-dortmund.de>}}\\[.25\baselineskip]
-%	\url{https://github.com/no-preserve-root/invoice2}}
+%    \url{https://github.com/no-preserve-root/invoice2}}
 %
 % \date{Version 1.2\\[.25\baselineskip]\DTMDate{2018-01-15}}
 %
@@ -226,10 +226,10 @@
 %    \end{invoice}
 % \end{verbatim}
 % \begin{invoice}[currency-symbol={CHF}, currency-in-header]
-	%    \invoicesingleitem{Ignition!}{4087.99}
-	%    \invoicesingleitem{The Art of Computer Programming 1--4}{162.99}
-	%    \invoicesingleitem{The TeXbook}{55.69}
-	% \end{invoice}
+    %    \invoicesingleitem{Ignition!}{4087.99}
+    %    \invoicesingleitem{The Art of Computer Programming 1--4}{162.99}
+    %    \invoicesingleitem{The TeXbook}{55.69}
+    % \end{invoice}
 %
 % Now, let us apply a VAT of 9\,\%. This will show the VAT column, the item
 % price column and the extended total.
@@ -664,13 +664,13 @@
 %
 %    \begin{macrocode}
 \cs_new:Nn {\@@_print_begin_table:}{
-	\exp_args:Nx \longtable {
-		\bool_if:NT \l_@@_amount_nonone_bool { c }
-		l
-		\bool_if:NT \l_@@_vat_nonzero_bool { c }
-		r
-		\bool_if:nT { \l_@@_amount_nonone_bool || \l_@@_vat_nonzero_bool } { r }
-	}
+    \exp_args:Nx \longtable {
+        \bool_if:NT \l_@@_amount_nonone_bool { c }
+        l
+        \bool_if:NT \l_@@_vat_nonzero_bool { c }
+        r
+        \bool_if:nT { \l_@@_amount_nonone_bool || \l_@@_vat_nonzero_bool } { r }
+    }
 }
 %    \end{macrocode}
 % \end{macro}
@@ -785,12 +785,12 @@
 %
 %    \begin{macrocode}
 \cs_new:Nn {\@@_print_real_value:n}{
-	\num[round-integer-to-decimal,
-	group-minimum-digits=4,
-	group-separator={\GetTranslation{invoice2-thousands-sep}},
-	output-decimal-marker={\GetTranslation{invoice2-decimal-point}}]{
-		#1
-	}
+    \num[round-integer-to-decimal,
+    group-minimum-digits=4,
+    group-separator={\GetTranslation{invoice2-thousands-sep}},
+    output-decimal-marker={\GetTranslation{invoice2-decimal-point}}]{
+        #1
+    }
 }
 %    \end{macrocode}
 % \end{macro}
@@ -1007,8 +1007,8 @@
 %    \begin{macrocode}
 \NewDocumentCommand{\invoiceitem}{ommm}{
     \@@_add_row:nnnn {#2} {#3}
-    	{\IfValueTF{#1}{#1}{\fp_use:N \l_@@_vat_fp}}
-    	{#4}
+        {\IfValueTF{#1}{#1}{\fp_use:N \l_@@_vat_fp}}
+        {#4}
 }
 \NewDocumentCommand{\invoicesingleitem}{omm}{
     \@@_add_row:nnnn {1} {#2}
