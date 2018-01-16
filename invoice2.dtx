@@ -94,6 +94,9 @@
 %    \item[currency-fraction-digits] The fractional digits to use for the
 %        currency. For almost all currencies, this is two (100 of the smaller
 %        unit make 1 of the larger). Default is 2.
+%    \item[currency-in-header] Controls if the currency symbol should be
+%        printed in the invoice header instead of printing it after each amount.
+%        Default is printing after each amount.
 %    \item[colorize] Enables colorization. While the typographical results may
 %        be mixed, colorization can help read very long invoices. Default is
 %        off.
@@ -212,6 +215,22 @@
 %    \invoicesingleitem{The TeXbook}{55.69}
 % \end{invoice}
 %
+% For some currencies, the symbol ist fairly long. In this case, it is advisable
+% to move the currency symbol to the invoice header.
+%
+% \begin{verbatim}
+%    \begin{invoice}[currency-symbol={CHF}, currency-in-header]
+%        \invoicesingleitem{Ignition!}{4087.99}
+%        \invoicesingleitem{The Art of Computer Programming 1--4}{162.99}
+%        \invoicesingleitem{The TeXbook}{55.69}
+%    \end{invoice}
+% \end{verbatim}
+% \begin{invoice}[currency-symbol={CHF}, currency-in-header]
+	%    \invoicesingleitem{Ignition!}{4087.99}
+	%    \invoicesingleitem{The Art of Computer Programming 1--4}{162.99}
+	%    \invoicesingleitem{The TeXbook}{55.69}
+	% \end{invoice}
+%
 % Now, let us apply a VAT of 9\,\%. This will show the VAT column, the item
 % price column and the extended total.
 %
@@ -305,6 +324,8 @@
 %    \item Split the \texttt{README.md} into a Github version and one for CTAN.
 %    \item Add support for Swiss German. Thanks to \texttt{@foreachthing} for
 %        the translation.
+%    \item Permit moving the currency symbol to the header. Thanks to
+%        \texttt{@foreachthing} for the report.
 % \end{itemize}
 %
 % \subsection{Version 1.1}
@@ -437,6 +458,16 @@
 %
 %    \begin{macrocode}
 \int_new:N \l_@@_currency_fraction_digits_int
+%    \end{macrocode}
+% \end{variable}
+%
+% \begin{variable}{\l_@@_currency_in_header_bool}
+% Controls if the invoice currency symbol should be moved intro the table
+% header (``Unit Price (\$)'') instead of printing it after each amount
+% (``123.45\ \$''). Can save space for long currencies.
+%
+%    \begin{macrocode}
+\bool_new:N \l_@@_currency_in_header_bool
 %    \end{macrocode}
 % \end{variable}
 %
@@ -579,6 +610,8 @@
     currency-fraction-digits .int_set:N = \l_@@_currency_fraction_digits_int,
     currency-fraction-digits .value_required:n = true,
     currency-fraction-digits .initial:n = 2,
+    currency-in-header .bool_set:N = \l_@@_currency_in_header_bool,
+    currency-in-header .initial:n = false,
     colorize .bool_set:N = \l_@@_colorize_bool,
     colorize .initial:n = false,
     odd-color .initial:n = white,
@@ -700,7 +733,12 @@
 %    \begin{macrocode}
 \cs_new:Nn {\@@_print_unit_price_title:}{
     \bool_if:nT { \l_@@_amount_nonone_bool || \l_@@_vat_nonzero_bool } {
-        \@@_print_column_title:n {\GetTranslation{invoice2-unit-price}} &
+        \@@_print_column_title:n {
+            \GetTranslation{invoice2-unit-price}
+            \bool_if:NT \l_@@_currency_in_header_bool {
+                \ (\tl_use:N \l_@@_currency_symbol_tl)
+            }
+        } &
     }
 }
 %    \end{macrocode}
@@ -711,7 +749,11 @@
 %
 %    \begin{macrocode}
 \cs_new:Nn {\@@_print_price_title:}{
-    \@@_print_column_title:n {\GetTranslation{invoice2-price}}
+    \@@_print_column_title:n {\GetTranslation{invoice2-price}
+        \bool_if:NT \l_@@_currency_in_header_bool {
+            \ (\tl_use:N \l_@@_currency_symbol_tl)
+        }
+    }
 }
 %    \end{macrocode}
 % \end{macro}
@@ -767,7 +809,9 @@
     output-decimal-marker={\GetTranslation{invoice2-decimal-point}}]{
         #1
     }
-    \, \tl_use:N \l_@@_currency_symbol_tl
+    \bool_if:NF \l_@@_currency_in_header_bool {
+        \, \tl_use:N \l_@@_currency_symbol_tl
+    }
 }
 \cs_new:Nn {\@@_print_currency_value:N}{
     \@@_print_currency_value:n {\fp_use:N #1}
@@ -1016,7 +1060,12 @@
 %    \begin{macrocode}
 \cs_new:Nn {\@@_print_net_item:}{
     \bool_if:NT \l_@@_vat_nonzero_bool {
-        \@@_print_footer_item:n {\GetTranslation{invoice2-net-total}}
+        \@@_print_footer_item:n {
+            \GetTranslation{invoice2-net-total}
+            \bool_if:NT \l_@@_currency_in_header_bool {
+                \ (\tl_use:N \l_@@_currency_symbol_tl)
+            }
+        }
         \@@_print_currency_value:N \l_@@_net_total_fp \\
     }
 }
@@ -1041,7 +1090,12 @@
 %
 %    \begin{macrocode}
 \cs_new:Nn {\@@_print_gross_item:}{
-    \@@_print_footer_item:n {\GetTranslation{invoice2-gross-total}}
+    \@@_print_footer_item:n {
+        \GetTranslation{invoice2-gross-total}
+        \bool_if:NT \l_@@_currency_in_header_bool {
+            \ (\tl_use:N \l_@@_currency_symbol_tl)
+        }
+    }
     \@@_print_currency_value:N \l_@@_gross_total_fp \\
 }
 %    \end{macrocode}
