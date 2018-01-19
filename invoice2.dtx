@@ -398,6 +398,7 @@
 \LoadDictionaryFor{english}{invoice2}
 \LoadDictionaryFor{german}{invoice2}
 \LoadDictionaryFor{swissgerman}{invoice2}
+\LoadDictionaryFor{french}{invoice2}
 \DeclareTranslationFallback{invoice2-thousands-sep}{\,}
 \DeclareTranslationFallback{invoice2-decimal-point}{.}
 \DeclareTranslationFallback{invoice2-amount}{Amount}
@@ -1218,6 +1219,24 @@
 \ProvideDictTranslation{invoice2-thousands-sep}{'}
 \ProvideDictTranslation{invoice2-decimal-point}{.}
 %</dictSwissGerman>
+%    \end{macrocode}
+%
+% \subsection{French Dictionary}
+%
+%    \begin{macrocode}
+%<*dictFrench>
+\ProvideDictionaryFor{French}{invoice2}
+\ProvideDictTranslation{invoice2-thousands-sep}{\,}
+\ProvideDictTranslation{invoice2-decimal-point}{,}
+\ProvideDictTranslation{invoice2-amount}{Montant}
+\ProvideDictTranslation{invoice2-item}{Item}
+\ProvideDictTranslation{invoice2-vat}{TVA}
+\ProvideDictTranslation{invoice2-unit-price}{Prix~unitaire}
+\ProvideDictTranslation{invoice2-price}{Prix}
+\ProvideDictTranslation{invoice2-net-total}{Total~net}
+\ProvideDictTranslation{invoice2-vat-total}{Total~TVA}
+\ProvideDictTranslation{invoice2-gross-total}{Montant~brut~total}
+%</dictFrench>
 %    \end{macrocode}
 % \end{implementation}
 %
