@@ -58,7 +58,7 @@
 % snippets designed for creating invoices, the only solution available in the
 % CTAN is the \pkg{invoice}\footnote{\url{https://www.ctan.org/pkg/invoice}}
 % package, which is not actively maintained and lacks
-% e.\,g.~internationalization support while requiring use of a project
+% e.g.~internationalization support while requiring use of a project
 % structure that does not fit many use cases.
 %
 % Thus, this package aims to reimplement the functionality provided by
@@ -82,8 +82,8 @@
 % \begin{description}
 %    \item[vat] Controls the global default for VAT. VAT can be overridden per
 %        invoice item and is either automatically added or subtracted (see the
-%        next parameter for details). This is given as a floating point number,
-%        e.\,g.~.19 for 19\,\%. Default is 0\,\%.
+%        next parameter for details). This is given as a floating-point number,
+%        e.g.~.19 for 19\,\%. Default is 0\,\%.
 %    \item[included-vat] Controls if prices are provided with VAT included or
 %        excluded. If VAT is included, all prices are gross prices, the VAT is
 %        subtracted to show the net price. If VAT is excluded, all prices are
@@ -128,10 +128,10 @@
 %
 % The following keys are defined:
 % \begin{description}
-%    \item[invoice2-thousands-sep] The separator between thousands, e.\,g. the
+%    \item[invoice2-thousands-sep] The separator between thousands, e.g. the
 %        space in 1\,000. Default is a small space.
 %    \item[invoice2-decimal-point] The separator between whole and
-%        fractional parts, e.\,g.~the dot in 40.00. Default is a dot.
+%        fractional parts, e.g.~the dot in 40.00. Default is a dot.
 %    \item[invoice2-amount] The \enquote{Amount} column title.
 %    \item[invoice2-item] The \enquote{Item} column title.
 %    \item[invoice2-vat] The \enquote{VAT} column title.
@@ -159,7 +159,7 @@
 % amount that is not one, \emph{every} row will list both price per unit and
 % the amount.
 %
-% If an item hat non-zero VAT, the net and gross totals will also differ. In
+% If an item has non-zero VAT, the net and gross totals will also differ. In
 % this case, the package will compute the net total, the total VAT and the
 % gross total and denote them below the invoice. If all items have 0\,\%-VAT,
 % only a gross total will be given.
@@ -188,9 +188,9 @@
 % configuration. For singular items, the second form can be used to imply an
 % amount of 1.
 %
-% VAT must be given as a floating point value (see the configuration parameter
+% VAT must be given as a floating-point value (see the configuration parameter
 % list for details). The amount and the unit price can be an integer or a
-% floating point number. Do \emph{not} add a currency symbol or formatting to
+% floating-point number. Do \emph{not} add a currency symbol or formatting to
 % the unit price.
 % \end{function}
 %
@@ -215,7 +215,7 @@
 %    \invoicesingleitem{The TeXbook}{55.69}
 % \end{invoice}
 %
-% For some currencies, the symbol ist fairly long. In this case, it is advisable
+% For some currencies, the symbol is fairly long. In this case, it is advisable
 % to move the currency symbol to the invoice header.
 %
 % \begin{verbatim}
@@ -290,7 +290,7 @@
 % \end{invoice}
 % \invoiceoptions{vat=0}
 %
-% Finally, let us toy with colorization. We wisely deceide to leave most
+% Finally, let us toy with colorization. We wisely decide to leave most
 % parts of the invoice white and only apply an extemely light grey to the even
 % rows.
 %
@@ -417,7 +417,7 @@
 %    \item the package level, as a package option
 %    \item the package level, using the \cmd{invoiceoptions} command
 %    \item per \cmd{invoice} environment, via the same syntax
-%    \item per invoice line, for some options (e.\,g.~VAT).
+%    \item per invoice line, for some options (e.g.~VAT).
 % \end{enumerate}
 %
 % \subsection{VAT Computation}
@@ -462,7 +462,7 @@
 % \end{variable}
 %
 % \begin{variable}{\l_@@_currency_in_header_bool}
-% Controls if the invoice currency symbol should be moved intro the table
+% Controls if the invoice currency symbol should be moved into the table
 % header (``Unit Price (\$)'') instead of printing it after each amount
 % (``123.45\ \$''). Can save space for long currencies.
 %
@@ -781,7 +781,7 @@
 %
 % \begin{macro}{\@@_print_real_value:n}
 % Emits a currency value, formatted with the current settings. The value must
-% be a floating point number or variable.
+% be a floating-point number or variable.
 %
 %    \begin{macrocode}
 \cs_new:Nn {\@@_print_real_value:n}{
@@ -797,7 +797,7 @@
 %
 % \begin{macro}{\@@_print_currency_value:n, \@@_print_currency_value:N}
 % Emits a currency value, formatted with the current settings. The value must
-% be a floating point number or variable.
+% be a floating-point number or variable.
 %
 %    \begin{macrocode}
 \cs_new:Nn {\@@_print_currency_value:n}{
@@ -821,7 +821,7 @@
 %
 %\begin{macro}{\@@_print_percentage:n}
 % Emits a percentage, formatted with the current settings. The value must be a
-% floating point number.
+% floating-point number.
 %
 %    \begin{macrocode}
 \cs_new:Nn {\@@_print_percentage:n}{
@@ -1135,7 +1135,7 @@
 % \end{macro}
 %
 % \begin{macro}{\@@_end_invoice:}
-% End an invoice enviroenment. Here, we can emit the \cmd{longtable} environment
+% End an invoice environment. Here, we can emit the \cmd{longtable} environment
 % since we possess all required information.
 %
 %    \begin{macrocode}
